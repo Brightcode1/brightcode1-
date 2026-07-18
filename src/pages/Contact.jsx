@@ -8,6 +8,7 @@ const Contact = () => {
     lastName: '',
     email: '',
     phone: '',
+    address: '',
     company: '',
     details: ''
   });
@@ -32,6 +33,10 @@ const Contact = () => {
     } else if (!/^\d{10}$/.test(formData.phone.replace(/[\s-]/g, ''))) {
       newErrors.phone = 'Please enter a valid 10-digit number';
     }
+
+    if (!formData.address.trim()) {
+      newErrors.address = 'Address is required';
+    }
     
     if (!formData.details.trim()) newErrors.details = 'Project Details are required';
     
@@ -40,10 +45,12 @@ const Contact = () => {
   };
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    
+    setFormData({ ...formData, [name]: value });
     // Clear the specific error when user starts typing
-    if (errors[e.target.name]) {
-      setErrors({ ...errors, [e.target.name]: '' });
+    if (errors[name]) {
+      setErrors({ ...errors, [name]: '' });
     }
   };
 
@@ -67,6 +74,7 @@ const Contact = () => {
           name: `${formData.firstName} ${formData.lastName}`,
           email: formData.email,
           phone: formData.phone,
+          address: formData.address,
           company: formData.company,
           message: formData.details
         })
@@ -76,7 +84,7 @@ const Contact = () => {
 
       if (response.ok) {
         setStatus('success');
-        setFormData({ firstName: '', lastName: '', email: '', phone: '', company: '', details: '' });
+        setFormData({ firstName: '', lastName: '', email: '', phone: '', address: '', company: '', details: '' });
       } else {
         setStatus('error');
         setErrorMessage(data.message || 'Something went wrong.');
@@ -88,7 +96,7 @@ const Contact = () => {
   };
 
   // Check if form is completely valid to enable/disable button
-  const isFormValid = formData.firstName && formData.lastName && formData.email && formData.phone && formData.details;
+  const isFormValid = formData.firstName && formData.lastName && formData.email && formData.phone && formData.address && formData.details;
 
   return (
     <div className="pt-20">
@@ -187,12 +195,12 @@ const Contact = () => {
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-gray-600">First Name *</label>
-                    <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} className={\`w-full bg-white border shadow-sm rounded-lg px-4 py-3 text-dark focus:outline-none focus:border-primary transition-colors \${errors.firstName ? 'border-red-500' : 'border-[#ECECEC]'}\`} placeholder="John" />
+                    <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} className={`w-full bg-white border shadow-sm rounded-lg px-4 py-3 text-dark focus:outline-none focus:border-primary transition-colors ${errors.firstName ? 'border-red-500' : 'border-[#ECECEC]'}`} placeholder="John" />
                     {errors.firstName && <p className="text-red-500 text-xs mt-1">{errors.firstName}</p>}
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-gray-600">Last Name *</label>
-                    <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} className={\`w-full bg-white border shadow-sm rounded-lg px-4 py-3 text-dark focus:outline-none focus:border-primary transition-colors \${errors.lastName ? 'border-red-500' : 'border-[#ECECEC]'}\`} placeholder="Doe" />
+                    <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} className={`w-full bg-white border shadow-sm rounded-lg px-4 py-3 text-dark focus:outline-none focus:border-primary transition-colors ${errors.lastName ? 'border-red-500' : 'border-[#ECECEC]'}`} placeholder="Doe" />
                     {errors.lastName && <p className="text-red-500 text-xs mt-1">{errors.lastName}</p>}
                   </div>
                 </div>
@@ -200,24 +208,31 @@ const Contact = () => {
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-gray-600">Email Address *</label>
-                    <input type="email" name="email" value={formData.email} onChange={handleChange} className={\`w-full bg-white border shadow-sm rounded-lg px-4 py-3 text-dark focus:outline-none focus:border-primary transition-colors \${errors.email ? 'border-red-500' : 'border-[#ECECEC]'}\`} placeholder="john@example.com" />
+                    <input type="email" name="email" value={formData.email} onChange={handleChange} className={`w-full bg-white border shadow-sm rounded-lg px-4 py-3 text-dark focus:outline-none focus:border-primary transition-colors ${errors.email ? 'border-red-500' : 'border-[#ECECEC]'}`} placeholder="john@example.com" />
                     {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-gray-600">Contact Number *</label>
-                    <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className={\`w-full bg-white border shadow-sm rounded-lg px-4 py-3 text-dark focus:outline-none focus:border-primary transition-colors \${errors.phone ? 'border-red-500' : 'border-[#ECECEC]'}\`} placeholder="1234567890" />
+                    <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className={`w-full bg-white border shadow-sm rounded-lg px-4 py-3 text-dark focus:outline-none focus:border-primary transition-colors ${errors.phone ? 'border-red-500' : 'border-[#ECECEC]'}`} placeholder="1234567890" maxLength="10" />
                     {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
                   </div>
                 </div>
 
-                <div className="space-y-2">
-                  <label className="text-sm font-medium text-gray-600">Company Name (Optional)</label>
-                  <input type="text" name="company" value={formData.company} onChange={handleChange} className="w-full bg-white border border-[#ECECEC] shadow-sm rounded-lg px-4 py-3 text-dark focus:outline-none focus:border-primary transition-colors" placeholder="Your Company Ltd." />
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-gray-600">Address *</label>
+                    <input type="text" name="address" value={formData.address} onChange={handleChange} className={`w-full bg-white border shadow-sm rounded-lg px-4 py-3 text-dark focus:outline-none focus:border-primary transition-colors ${errors.address ? 'border-red-500' : 'border-[#ECECEC]'}`} placeholder="123 Main St, City" />
+                    {errors.address && <p className="text-red-500 text-xs mt-1">{errors.address}</p>}
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-gray-600">Company Name (Optional)</label>
+                    <input type="text" name="company" value={formData.company} onChange={handleChange} className="w-full bg-white border border-[#ECECEC] shadow-sm rounded-lg px-4 py-3 text-dark focus:outline-none focus:border-primary transition-colors" placeholder="Your Company Ltd." />
+                  </div>
                 </div>
 
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-gray-600">Project Details *</label>
-                  <textarea rows="5" name="details" value={formData.details} onChange={handleChange} className={\`w-full bg-white border shadow-sm rounded-lg px-4 py-3 text-dark focus:outline-none focus:border-primary transition-colors resize-none \${errors.details ? 'border-red-500' : 'border-[#ECECEC]'}\`} placeholder="Tell us about your project..."></textarea>
+                  <textarea rows="5" name="details" value={formData.details} onChange={handleChange} className={`w-full bg-white border shadow-sm rounded-lg px-4 py-3 text-dark focus:outline-none focus:border-primary transition-colors resize-none ${errors.details ? 'border-red-500' : 'border-[#ECECEC]'}`} placeholder="Tell us about your project..."></textarea>
                   {errors.details && <p className="text-red-500 text-xs mt-1">{errors.details}</p>}
                 </div>
 

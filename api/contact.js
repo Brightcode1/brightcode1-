@@ -21,9 +21,9 @@ export default async function handler(req, res) {
     return res.status(405).json({ message: 'Method Not Allowed' });
   }
 
-  const { name, email, phone, company, message } = req.body;
+  const { name, email, phone, address, company, message } = req.body;
 
-  if (!name || !email || !phone || !message) {
+  if (!name || !email || !phone || !address || !message) {
     return res.status(400).json({ message: 'Please fill all required fields.' });
   }
 
@@ -73,6 +73,10 @@ export default async function handler(req, res) {
                 <td style="padding: 12px 0; border-bottom: 1px solid #f8fafc; color: #0f172a; font-weight: 500; font-size: 16px;">
                   <a href="tel:${phone}" style="color: #0f172a; text-decoration: none;">${phone}</a>
                 </td>
+              </tr>
+              <tr>
+                <td style="padding: 12px 0; border-bottom: 1px solid #f8fafc; color: #64748b; font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">Address</td>
+                <td style="padding: 12px 0; border-bottom: 1px solid #f8fafc; color: #0f172a; font-weight: 500; font-size: 16px;">${address}</td>
               </tr>
               <tr>
                 <td style="padding: 12px 0; color: #64748b; font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">Company</td>
