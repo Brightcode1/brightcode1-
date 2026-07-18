@@ -10,7 +10,6 @@ const navLinks = [
   { name: 'Portfolio', path: '/portfolio' },
   { name: 'Technologies', path: '/technologies' },
   { name: 'Digital Marketing', path: '/digital-marketing' },
-  { name: 'Contact', path: '/contact' },
 ];
 
 const Navbar = () => {
