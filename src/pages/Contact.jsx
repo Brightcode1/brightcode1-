@@ -1,8 +1,56 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    company: '',
+    details: ''
+  });
+  const [status, setStatus] = useState('idle'); // idle, loading, success, error
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus('loading');
+    setErrorMessage('');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: `${formData.firstName} ${formData.lastName}`,
+          email: formData.email,
+          phone: formData.company, // sending company name in the phone field for now or keep it as is
+          message: formData.details
+        })
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setStatus('success');
+        setFormData({ firstName: '', lastName: '', email: '', company: '', details: '' });
+      } else {
+        setStatus('error');
+        setErrorMessage(data.message || 'Something went wrong.');
+      }
+    } catch (error) {
+      setStatus('error');
+      setErrorMessage('Network error. Please try again later.');
+    }
+  };
+
   return (
     <div className="pt-20">
       <section className="py-20 relative">
@@ -84,36 +132,48 @@ const Contact = () => {
               animate={{ opacity: 1, x: 0 }}
               className="lg:col-span-2"
             >
-              <form className="glass-card p-8 md:p-12 rounded-2xl space-y-6">
+              <form onSubmit={handleSubmit} className="glass-card p-8 md:p-12 rounded-2xl space-y-6">
+                
+                {status === 'success' && (
+                  <div className="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg">
+                    Thank you! Your message has been sent successfully. We will get back to you soon.
+                  </div>
+                )}
+                {status === 'error' && (
+                  <div className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg">
+                    {errorMessage}
+                  </div>
+                )}
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-gray-600">First Name *</label>
-                    <input type="text" className="w-full bg-white border border-[#ECECEC] shadow-sm border border-[#ECECEC] rounded-lg px-4 py-3 text-dark focus:outline-none focus:border-primary transition-colors" required />
+                    <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} className="w-full bg-white border border-[#ECECEC] shadow-sm rounded-lg px-4 py-3 text-dark focus:outline-none focus:border-primary transition-colors" required />
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-gray-600">Last Name *</label>
-                    <input type="text" className="w-full bg-white border border-[#ECECEC] shadow-sm border border-[#ECECEC] rounded-lg px-4 py-3 text-dark focus:outline-none focus:border-primary transition-colors" required />
+                    <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} className="w-full bg-white border border-[#ECECEC] shadow-sm rounded-lg px-4 py-3 text-dark focus:outline-none focus:border-primary transition-colors" required />
                   </div>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-gray-600">Email Address *</label>
-                    <input type="email" className="w-full bg-white border border-[#ECECEC] shadow-sm border border-[#ECECEC] rounded-lg px-4 py-3 text-dark focus:outline-none focus:border-primary transition-colors" required />
+                    <input type="email" name="email" value={formData.email} onChange={handleChange} className="w-full bg-white border border-[#ECECEC] shadow-sm rounded-lg px-4 py-3 text-dark focus:outline-none focus:border-primary transition-colors" required />
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-gray-600">Company Name</label>
-                    <input type="text" className="w-full bg-white border border-[#ECECEC] shadow-sm border border-[#ECECEC] rounded-lg px-4 py-3 text-dark focus:outline-none focus:border-primary transition-colors" />
+                    <input type="text" name="company" value={formData.company} onChange={handleChange} className="w-full bg-white border border-[#ECECEC] shadow-sm rounded-lg px-4 py-3 text-dark focus:outline-none focus:border-primary transition-colors" />
                   </div>
                 </div>
 
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-gray-600">Project Details *</label>
-                  <textarea rows="6" className="w-full bg-white border border-[#ECECEC] shadow-sm border border-[#ECECEC] rounded-lg px-4 py-3 text-dark focus:outline-none focus:border-primary transition-colors resize-none" required></textarea>
+                  <textarea rows="6" name="details" value={formData.details} onChange={handleChange} className="w-full bg-white border border-[#ECECEC] shadow-sm rounded-lg px-4 py-3 text-dark focus:outline-none focus:border-primary transition-colors resize-none" required></textarea>
                 </div>
 
-                <button type="submit" className="w-full py-4 rounded-lg bg-primary hover:bg-secondary text-dark font-bold transition-all shadow-lg hover:shadow-primary/50">
-                  Send Message
+                <button type="submit" disabled={status === 'loading'} className="w-full py-4 rounded-lg bg-primary hover:bg-secondary text-dark font-bold transition-all shadow-lg hover:shadow-primary/50 disabled:opacity-70 disabled:cursor-not-allowed">
+                  {status === 'loading' ? 'Sending...' : 'Send Message'}
                 </button>
               </form>
             </motion.div>
