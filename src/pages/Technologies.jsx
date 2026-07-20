@@ -4,7 +4,7 @@ import CTA from '../components/sections/CTA';
 
 const TechnologiesPage = () => {
   return (
-    <div className="pt-20">
+    <div>
       <section className="py-20 bg-white text-center border-b border-[#ECECEC]">
         <div className="container mx-auto px-4">
           <h1 className="text-5xl font-bold mb-6">Our <span className="text-gradient">Tech Stack</span></h1>

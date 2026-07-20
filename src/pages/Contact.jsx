@@ -99,7 +99,7 @@ const Contact = () => {
   const isFormValid = formData.firstName && formData.lastName && formData.email && formData.phone && formData.address && formData.details;
 
   return (
-    <div className="pt-20">
+    <div>
       <section className="py-20 relative">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
           <div className="text-center mb-16">

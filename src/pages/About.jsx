@@ -4,7 +4,7 @@ import { Users, Target, Zap, Shield } from 'lucide-react';
 
 const About = () => {
   return (
-    <div className="pt-20">
+    <div>
       {/* Header Section */}
       <section className="py-20 relative bg-white overflow-hidden">
         <div className="absolute inset-0 hidden"></div>

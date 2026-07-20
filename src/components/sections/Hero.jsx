@@ -6,7 +6,7 @@ import heroImg from '../../assets/hero_illustration.png';
 
 const Hero = () => {
   return (
-    <section className="relative min-h-[90vh] flex items-center pt-24 pb-16 bg-transparent">
+    <section className="relative min-h-[90vh] flex items-center pt-4 pb-16 bg-transparent">
 
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

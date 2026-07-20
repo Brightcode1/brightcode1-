@@ -28,7 +28,7 @@ const Navbar = () => {
   return (
     <header
       className={`fixed w-full top-0 z-50 transition-all duration-300 ${
-        scrolled ? 'glass py-3 shadow-lg' : 'bg-transparent py-5'
+        scrolled ? 'glass py-3 shadow-lg' : 'bg-transparent py-4'
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -46,7 +46,7 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 to={link.path}
-                className={`text-sm font-medium transition-colors hover:text-primary ${
+                className={`text-lg font-medium transition-colors hover:text-primary ${
                   location.pathname === link.path ? 'text-primary' : 'text-gray-600'
                 }`}
               >
@@ -55,7 +55,7 @@ const Navbar = () => {
             ))}
             <Link
               to="/contact"
-              className="px-5 py-2.5 rounded-full bg-primary hover:bg-secondary text-white text-sm font-semibold transition-all shadow-[0_4px_14px_rgba(91,94,245,0.3)] hover:shadow-[0_6px_20px_rgba(91,94,245,0.4)] hover:-translate-y-0.5"
+              className="px-5 py-2.5 rounded-full bg-primary hover:bg-secondary text-white text-lg font-semibold transition-all shadow-[0_4px_14px_rgba(91,94,245,0.3)] hover:shadow-[0_6px_20px_rgba(91,94,245,0.4)] hover:-translate-y-0.5"
             >
               Get Free Consultation
             </Link>

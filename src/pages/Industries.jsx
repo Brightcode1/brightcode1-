@@ -18,7 +18,7 @@ const industries = [
 
 const IndustriesPage = () => {
   return (
-    <div className="pt-20">
+    <div>
       <section className="py-20 relative bg-white overflow-hidden">
         <div className="absolute inset-0 hidden"></div>
         <div className="container mx-auto px-4 text-center relative z-10">

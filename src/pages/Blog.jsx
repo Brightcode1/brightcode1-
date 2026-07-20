@@ -29,7 +29,7 @@ const blogPosts = [
 
 const BlogPage = () => {
   return (
-    <div className="pt-20">
+    <div>
       <section className="py-20 bg-white text-center border-b border-[#ECECEC]">
         <div className="container mx-auto px-4">
           <motion.h1 

@@ -4,7 +4,7 @@ import CTA from '../components/sections/CTA';
 
 const PortfolioPage = () => {
   return (
-    <div className="pt-20">
+    <div>
       <section className="py-20 bg-white text-center">
         <div className="container mx-auto px-4">
           <h1 className="text-5xl font-bold mb-6">Our <span className="text-gradient">Portfolio</span></h1>

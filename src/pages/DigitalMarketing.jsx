@@ -85,7 +85,7 @@ const DigitalMarketing = () => {
   ];
 
   return (
-    <div className="pt-20 bg-white">
+    <div className="bg-white">
       {/* Hero Section */}
       <section className="py-24 relative overflow-hidden">
         <div className="container mx-auto px-4 relative z-10 text-center">
