@@ -97,7 +97,7 @@ const CTA = () => {
   const isFormValid = formData.firstName && formData.lastName && formData.email && formData.phone && formData.address && formData.details;
 
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section className="py-12 relative overflow-hidden">
       {/* Background gradients */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-full max-h-[500px] bg-primary/20 rounded-full blur-[150px] -z-10"></div>
       

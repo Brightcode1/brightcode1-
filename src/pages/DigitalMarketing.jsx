@@ -87,7 +87,7 @@ const DigitalMarketing = () => {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-12 relative overflow-hidden">
         <div className="container mx-auto px-4 relative z-10 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -187,7 +187,7 @@ const DigitalMarketing = () => {
       </section>
 
       {/* Package Features */}
-      <section className="py-24 bg-[#F8FAFC]">
+      <section className="py-12 bg-[#F8FAFC]">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-dark mb-4">Package Features in Detail</h2>
@@ -222,7 +222,7 @@ const DigitalMarketing = () => {
       </section>
 
       {/* Trust Section */}
-      <section className="py-24">
+      <section className="py-12">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-dark mb-4">Why Choose BrightCode Digital?</h2>
@@ -249,7 +249,7 @@ const DigitalMarketing = () => {
       </section>
 
       {/* Process Section */}
-      <section className="py-24 bg-[#F8FAFC]">
+      <section className="py-12 bg-[#F8FAFC]">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-dark mb-4">Our Process</h2>
@@ -280,7 +280,7 @@ const DigitalMarketing = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24">
+      <section className="py-12">
         <div className="container mx-auto px-4 max-w-3xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-dark mb-4">Frequently Asked Questions</h2>

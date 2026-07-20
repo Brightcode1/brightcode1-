@@ -7,7 +7,7 @@ import CTA from '../components/sections/CTA';
 const ServicesPage = () => {
   return (
     <div>
-      <section className="py-20 bg-white text-center">
+      <section className="py-10 bg-white text-center">
         <div className="container mx-auto px-4">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}

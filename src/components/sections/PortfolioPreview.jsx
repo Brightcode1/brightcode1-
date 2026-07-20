@@ -21,9 +21,9 @@ const PortfolioPreview = () => {
     : portfolioItems.filter(item => item.category === filter);
 
   return (
-    <section className="py-24 relative">
+    <section className="py-8 relative">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-6 gap-4">
           <div className="max-w-2xl">
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
@@ -86,11 +86,6 @@ const PortfolioPreview = () => {
           </AnimatePresence>
         </motion.div>
 
-        <div className="text-center mt-12">
-          <button className="px-8 py-4 rounded-full glass border border-[#ECECEC] hover:bg-gray-50 border border-[#ECECEC] text-dark font-semibold transition-all">
-            View All Projects
-          </button>
-        </div>
       </div>
     </section>
   );

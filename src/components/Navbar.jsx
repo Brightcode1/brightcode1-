@@ -35,7 +35,8 @@ const Navbar = () => {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
-            <span className="text-2xl font-bold text-dark">
+            <img src="/favicon.jpeg" alt="BrightCode Digital Logo" className="h-10 w-auto rounded-md" />
+            <span className="text-2xl font-bold text-dark hidden sm:inline-block">
               BrightCode <span className="text-primary">Digital</span>
             </span>
           </Link>

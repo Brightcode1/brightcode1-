@@ -43,7 +43,7 @@ const ServicesGrid = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section className="py-12 relative overflow-hidden">
       <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-[100px] -z-10"></div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">

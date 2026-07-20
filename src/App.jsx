@@ -10,6 +10,8 @@ import Industries from './pages/Industries';
 import Blog from './pages/Blog';
 import Contact from './pages/Contact';
 import DigitalMarketing from './pages/DigitalMarketing';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsOfService from './pages/TermsOfService';
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
           <Route path="blog" element={<Blog />} />
           <Route path="contact" element={<Contact />} />
           <Route path="digital-marketing" element={<DigitalMarketing />} />
+          <Route path="privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="terms-of-service" element={<TermsOfService />} />
         </Route>
       </Routes>
     </BrowserRouter>

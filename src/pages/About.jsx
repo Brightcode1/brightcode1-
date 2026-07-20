@@ -6,7 +6,7 @@ const About = () => {
   return (
     <div>
       {/* Header Section */}
-      <section className="py-20 relative bg-white overflow-hidden">
+      <section className="py-10 relative bg-white overflow-hidden">
         <div className="absolute inset-0 hidden"></div>
         <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-primary/20 rounded-full blur-[120px] -z-10"></div>
         <div className="container mx-auto px-4 text-center relative z-10">
@@ -29,7 +29,7 @@ const About = () => {
       </section>
 
       {/* Story & Vision */}
-      <section className="py-20 border-t border-[#ECECEC]">
+      <section className="py-10 border-t border-[#ECECEC]">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <motion.div 
@@ -62,7 +62,7 @@ const About = () => {
       </section>
 
       {/* Core Values */}
-      <section className="py-20 glass bg-white border border-[#ECECEC] shadow-sm">
+      <section className="py-10 glass bg-white border border-[#ECECEC] shadow-sm">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">Our Core <span className="text-gradient">Values</span></h2>

@@ -15,7 +15,7 @@ const features = [
 
 const WhyChooseUs = () => {
   return (
-    <section className="py-24 bg-white relative">
+    <section className="py-12 bg-white relative">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row gap-16 items-center">
           

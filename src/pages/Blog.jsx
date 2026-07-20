@@ -30,7 +30,7 @@ const blogPosts = [
 const BlogPage = () => {
   return (
     <div>
-      <section className="py-20 bg-white text-center border-b border-[#ECECEC]">
+      <section className="py-10 bg-white text-center border-b border-[#ECECEC]">
         <div className="container mx-auto px-4">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
@@ -50,7 +50,7 @@ const BlogPage = () => {
         </div>
       </section>
 
-      <section className="py-24">
+      <section className="py-12">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {blogPosts.map((post, index) => (
