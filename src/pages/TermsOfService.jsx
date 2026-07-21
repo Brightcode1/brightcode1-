@@ -20,7 +20,7 @@ const TermsOfService = () => {
               <FileText size={32} />
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-dark mb-4 tracking-tight">Terms and Conditions</h1>
-            <p className="text-gray-500 text-lg">Last updated: September 2021</p>
+            <p className="text-gray-500 text-lg">Last updated: jun 2026</p>
           </motion.div>
 
           <motion.div
