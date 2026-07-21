@@ -43,7 +43,8 @@ const Footer = () => {
                 { name: 'About', path: '/about' },
                 { name: 'Services', path: '/services' },
                 { name: 'Portfolio', path: '/portfolio' },
-                { name: 'Blog', path: '/blog' }
+                { name: 'Blog', path: '/blog' },
+                { name: 'Digital Marketing', path: '/digital-marketing' }
               ].map((link) => (
                 <li key={link.name}>
                   <Link to={link.path} className="text-gray-600 hover:text-primary transition-colors flex items-center gap-2">
@@ -59,7 +60,7 @@ const Footer = () => {
           <div>
             <h3 className="text-dark text-lg font-semibold mb-6">Our Services</h3>
             <ul className="space-y-3">
-              {['Web Development', 'Mobile Apps', 'Custom Software', 'Digital Marketing', 'AI Solutions', 'Cloud Services'].map((item) => (
+              {['Web Development', 'Mobile Apps', 'Custom Software', 'AI Solutions', 'Cloud Services', 'Ui/Ux design  '].map((item) => (
                 <li key={item}>
                   <Link to="/digital-marketing" className="text-gray-600 hover:text-primary transition-colors flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
