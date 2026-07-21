@@ -19,13 +19,13 @@ const Footer = () => {
               We help startups and enterprises build modern digital solutions that scale and grow businesses globally.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-500 hover:bg-primary hover:text-white hover:border-primary transition-all shadow-sm hover:shadow-md">
+              <a href="#" aria-label="Social Link" className="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-500 hover:bg-primary hover:text-white hover:border-primary transition-all shadow-sm hover:shadow-md">
                 <FaFacebook size={18} />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-500 hover:bg-primary hover:text-white hover:border-primary transition-all shadow-sm hover:shadow-md">
+              <a href="#" aria-label="Social Link" className="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-500 hover:bg-primary hover:text-white hover:border-primary transition-all shadow-sm hover:shadow-md">
                 <FaTwitter size={18} />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-500 hover:bg-primary hover:text-white hover:border-primary transition-all shadow-sm hover:shadow-md">
+              <a href="#" aria-label="Social Link" className="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-500 hover:bg-primary hover:text-white hover:border-primary transition-all shadow-sm hover:shadow-md">
                 <FaLinkedin size={18} />
               </a>
               <a href="https://instagram.com/brightcode_digital" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-500 hover:bg-primary hover:text-white hover:border-primary transition-all shadow-sm hover:shadow-md">
@@ -61,7 +61,7 @@ const Footer = () => {
             <ul className="space-y-3">
               {['Web Development', 'Mobile Apps', 'Custom Software', 'Digital Marketing', 'AI Solutions', 'Cloud Services'].map((item) => (
                 <li key={item}>
-                  <Link to="/services" className="text-gray-600 hover:text-primary transition-colors flex items-center gap-2">
+                  <Link to="/digital-marketing" className="text-gray-600 hover:text-primary transition-colors flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
                     {item}
                   </Link>

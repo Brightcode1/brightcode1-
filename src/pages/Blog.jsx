@@ -63,7 +63,7 @@ const BlogPage = () => {
                 className="glass-card rounded-2xl overflow-hidden group cursor-pointer flex flex-col h-full"
               >
                 <div className="relative h-64 overflow-hidden">
-                  <img src={post.image} alt={post.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <img loading="lazy" decoding="async" src={post.image} alt={post.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                   <div className="absolute top-4 left-4 px-3 py-1 bg-white/80 backdrop-blur-md rounded-full text-xs font-semibold text-accent">
                     {post.category}
                   </div>

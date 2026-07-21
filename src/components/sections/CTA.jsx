@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight, Mail, Phone, MapPin } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight, Mail, Phone, MapPin, CheckCircle2, Sparkles } from 'lucide-react';
 
 const CTA = () => {
   const [formData, setFormData] = useState({
@@ -97,108 +97,128 @@ const CTA = () => {
   const isFormValid = formData.firstName && formData.lastName && formData.email && formData.phone && formData.address && formData.details;
 
   return (
-    <section className="py-12 relative overflow-hidden">
+    <section className="py-24 relative overflow-hidden bg-dark">
       {/* Background gradients */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-full max-h-[500px] bg-primary/20 rounded-full blur-[150px] -z-10"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1200px] h-[800px] bg-gradient-to-r from-primary/30 to-secondary/30 rounded-full blur-[150px] -z-10 opacity-70"></div>
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgc3Ryb2tlPSIjRTZFNkU2IiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiPjxwb2x5Z29uIHBvaW50cz0iMCAwIDQwIDAgNDAgNDAgMCA0MCIvPjwvZz48L3N2Zz4=')] opacity-[0.05] pointer-events-none mix-blend-overlay"></div>
       
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="glass-card rounded-3xl overflow-hidden border-primary/20">
-          <div className="grid lg:grid-cols-2">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="bg-white/5 border border-white/10 rounded-[2.5rem] overflow-hidden backdrop-blur-2xl shadow-2xl">
+          <div className="grid lg:grid-cols-5">
             
             {/* Left Content */}
-            <div className="p-10 md:p-16 flex flex-col justify-center">
+            <div className="lg:col-span-2 p-10 md:p-16 flex flex-col justify-between relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/3"></div>
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
+                className="relative z-10"
               >
-                <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                  Ready to start your <br/><span className="text-gradient">digital journey?</span>
+                <div className="inline-flex items-center gap-2 py-2 px-4 rounded-full bg-white/10 border border-white/20 text-white font-medium text-xs mb-8 backdrop-blur-md">
+                  <Sparkles size={14} className="text-accent" />
+                  Let's Collaborate
+                </div>
+                <h2 className="text-4xl md:text-5xl font-display font-bold mb-6 leading-tight text-white tracking-tight">
+                  Ready to start your <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">digital journey?</span>
                 </h2>
-                <p className="text-gray-600 text-lg mb-8 leading-relaxed max-w-md">
+                <p className="text-gray-300 text-lg mb-12 leading-relaxed max-w-sm font-light">
                   Let's discuss how BrightCode Digital can help you achieve your business goals with cutting-edge technology.
                 </p>
                 
-                <div className="space-y-4 mb-10">
-                  <div className="flex items-center gap-4 text-gray-600">
-                    <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
-                      <Mail size={18} />
+                <div className="space-y-6">
+                  <div className="flex items-center gap-5 text-gray-300 group">
+                    <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                      <Mail size={20} />
                     </div>
-                    <span>digitalbrightcode@gmail.com</span>
+                    <span className="font-medium group-hover:text-white transition-colors">digitalbrightcode@gmail.com</span>
                   </div>
-                  <div className="flex items-center gap-4 text-gray-600">
-                    <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
-                      <Phone size={18} />
+                  <div className="flex items-center gap-5 text-gray-300 group">
+                    <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                      <Phone size={20} />
                     </div>
-                    <span>6352677911</span>
+                    <span className="font-medium group-hover:text-white transition-colors">6352677911</span>
                   </div>
                 </div>
               </motion.div>
             </div>
 
             {/* Right Form */}
-            <div className="bg-white border border-[#ECECEC] shadow-sm p-10 md:p-16 border-l border-[#ECECEC]">
-              <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="lg:col-span-3 bg-white p-10 md:p-16 border-l border-white/10 relative">
+              <motion.form 
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                onSubmit={handleSubmit} 
+                className="space-y-8"
+              >
                 
-                {status === 'success' && (
-                  <div className="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg">
-                    Thank you! Your message has been sent successfully. We will get back to you soon.
-                  </div>
-                )}
-                {status === 'error' && (
-                  <div className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg">
-                    {errorMessage}
-                  </div>
-                )}
+                <AnimatePresence>
+                  {status === 'success' && (
+                    <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="p-5 mb-6 text-sm text-green-700 bg-green-50 border border-green-200 rounded-xl flex items-center gap-3">
+                      <CheckCircle2 size={20} className="text-green-500" />
+                      Thank you! Your message has been sent successfully. We will get back to you soon.
+                    </motion.div>
+                  )}
+                  {status === 'error' && (
+                    <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="p-5 mb-6 text-sm text-red-700 bg-red-50 border border-red-200 rounded-xl">
+                      {errorMessage}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-gray-600">First Name *</label>
-                    <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} className={`w-full bg-white border shadow-sm rounded-lg px-4 py-3 text-dark focus:outline-none focus:border-primary transition-colors ${errors.firstName ? 'border-red-500' : 'border-[#ECECEC]'}`} placeholder="John" />
-                    {errors.firstName && <p className="text-red-500 text-xs mt-1">{errors.firstName}</p>}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="relative group">
+                    <input type="text" id="firstName" name="firstName" value={formData.firstName} onChange={handleChange} className={`peer w-full bg-transparent border-b-2 border-gray-200 py-3 text-dark focus:outline-none focus:border-primary transition-colors placeholder-transparent ${errors.firstName ? 'border-red-500' : ''}`} placeholder="John" />
+                    <label htmlFor="firstName" className="absolute left-0 -top-3.5 text-sm text-gray-500 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-primary font-medium cursor-text">First Name *</label>
+                    {errors.firstName && <p className="text-red-500 text-xs mt-1 absolute -bottom-5">{errors.firstName}</p>}
                   </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-gray-600">Last Name *</label>
-                    <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} className={`w-full bg-white border shadow-sm rounded-lg px-4 py-3 text-dark focus:outline-none focus:border-primary transition-colors ${errors.lastName ? 'border-red-500' : 'border-[#ECECEC]'}`} placeholder="Doe" />
-                    {errors.lastName && <p className="text-red-500 text-xs mt-1">{errors.lastName}</p>}
-                  </div>
-                </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-gray-600">Email Address *</label>
-                    <input type="email" name="email" value={formData.email} onChange={handleChange} className={`w-full bg-white border shadow-sm rounded-lg px-4 py-3 text-dark focus:outline-none focus:border-primary transition-colors ${errors.email ? 'border-red-500' : 'border-[#ECECEC]'}`} placeholder="john@example.com" />
-                    {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-gray-600">Contact Number *</label>
-                    <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className={`w-full bg-white border shadow-sm rounded-lg px-4 py-3 text-dark focus:outline-none focus:border-primary transition-colors ${errors.phone ? 'border-red-500' : 'border-[#ECECEC]'}`} placeholder="1234567890" maxLength="10" />
-                    {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
+                  <div className="relative group">
+                    <input type="text" id="lastName" name="lastName" value={formData.lastName} onChange={handleChange} className={`peer w-full bg-transparent border-b-2 border-gray-200 py-3 text-dark focus:outline-none focus:border-primary transition-colors placeholder-transparent ${errors.lastName ? 'border-red-500' : ''}`} placeholder="Doe" />
+                    <label htmlFor="lastName" className="absolute left-0 -top-3.5 text-sm text-gray-500 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-primary font-medium cursor-text">Last Name *</label>
+                    {errors.lastName && <p className="text-red-500 text-xs mt-1 absolute -bottom-5">{errors.lastName}</p>}
                   </div>
                 </div>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-gray-600">Address *</label>
-                    <input type="text" name="address" value={formData.address} onChange={handleChange} className={`w-full bg-white border shadow-sm rounded-lg px-4 py-3 text-dark focus:outline-none focus:border-primary transition-colors ${errors.address ? 'border-red-500' : 'border-[#ECECEC]'}`} placeholder="123 Main St, City" />
-                    {errors.address && <p className="text-red-500 text-xs mt-1">{errors.address}</p>}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="relative group mt-2">
+                    <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} className={`peer w-full bg-transparent border-b-2 border-gray-200 py-3 text-dark focus:outline-none focus:border-primary transition-colors placeholder-transparent ${errors.email ? 'border-red-500' : ''}`} placeholder="john@example.com" />
+                    <label htmlFor="email" className="absolute left-0 -top-3.5 text-sm text-gray-500 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-primary font-medium cursor-text">Email Address *</label>
+                    {errors.email && <p className="text-red-500 text-xs mt-1 absolute -bottom-5">{errors.email}</p>}
                   </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-gray-600">Company Name (Optional)</label>
-                    <input type="text" name="company" value={formData.company} onChange={handleChange} className="w-full bg-white border border-[#ECECEC] shadow-sm rounded-lg px-4 py-3 text-dark focus:outline-none focus:border-primary transition-colors" placeholder="Your Company Ltd." />
+                  <div className="relative group mt-2">
+                    <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange} className={`peer w-full bg-transparent border-b-2 border-gray-200 py-3 text-dark focus:outline-none focus:border-primary transition-colors placeholder-transparent ${errors.phone ? 'border-red-500' : ''}`} placeholder="1234567890" maxLength="10" />
+                    <label htmlFor="phone" className="absolute left-0 -top-3.5 text-sm text-gray-500 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-primary font-medium cursor-text">Contact Number *</label>
+                    {errors.phone && <p className="text-red-500 text-xs mt-1 absolute -bottom-5">{errors.phone}</p>}
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="relative group mt-2">
+                    <input type="text" id="address" name="address" value={formData.address} onChange={handleChange} className={`peer w-full bg-transparent border-b-2 border-gray-200 py-3 text-dark focus:outline-none focus:border-primary transition-colors placeholder-transparent ${errors.address ? 'border-red-500' : ''}`} placeholder="123 Main St, City" />
+                    <label htmlFor="address" className="absolute left-0 -top-3.5 text-sm text-gray-500 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-primary font-medium cursor-text">Address *</label>
+                    {errors.address && <p className="text-red-500 text-xs mt-1 absolute -bottom-5">{errors.address}</p>}
+                  </div>
+                  <div className="relative group mt-2">
+                    <input type="text" id="company" name="company" value={formData.company} onChange={handleChange} className="peer w-full bg-transparent border-b-2 border-gray-200 py-3 text-dark focus:outline-none focus:border-primary transition-colors placeholder-transparent" placeholder="Your Company Ltd." />
+                    <label htmlFor="company" className="absolute left-0 -top-3.5 text-sm text-gray-500 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-primary font-medium cursor-text">Company Name (Optional)</label>
                   </div>
                 </div>
 
-                <div className="space-y-2">
-                  <label className="text-sm font-medium text-gray-600">Project Details *</label>
-                  <textarea rows="5" name="details" value={formData.details} onChange={handleChange} className={`w-full bg-white border shadow-sm rounded-lg px-4 py-3 text-dark focus:outline-none focus:border-primary transition-colors resize-none ${errors.details ? 'border-red-500' : 'border-[#ECECEC]'}`} placeholder="Tell us about your project..."></textarea>
-                  {errors.details && <p className="text-red-500 text-xs mt-1">{errors.details}</p>}
+                <div className="relative group mt-4">
+                  <textarea id="details" rows="3" name="details" value={formData.details} onChange={handleChange} className={`peer w-full bg-transparent border-b-2 border-gray-200 py-3 text-dark focus:outline-none focus:border-primary transition-colors resize-none placeholder-transparent ${errors.details ? 'border-red-500' : ''}`} placeholder="Tell us about your project..."></textarea>
+                  <label htmlFor="details" className="absolute left-0 -top-3.5 text-sm text-gray-500 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-primary font-medium cursor-text">Project Details *</label>
+                  {errors.details && <p className="text-red-500 text-xs mt-1 absolute -bottom-5">{errors.details}</p>}
                 </div>
                 
-                <button type="submit" disabled={status === 'loading' || !isFormValid} className="w-full py-4 rounded-lg bg-primary hover:bg-secondary text-dark font-bold flex justify-center items-center gap-2 transition-all shadow-[0_0_15px_rgba(37,99,235,0.3)] hover:shadow-[0_0_25px_rgba(37,99,235,0.5)] disabled:opacity-50 disabled:cursor-not-allowed">
-                  {status === 'loading' ? 'Sending...' : 'Send Message'} {!status === 'loading' && <ArrowRight size={20} />}
-                </button>
-              </form>
+                <div className="pt-6">
+                  <button type="submit" disabled={status === 'loading' || !isFormValid} className="group relative w-full overflow-hidden rounded-xl bg-gradient-to-r from-primary to-secondary py-4 text-white font-semibold flex justify-center items-center gap-2 transition-all shadow-[0_10px_20px_rgba(37,99,235,0.2)] hover:shadow-[0_15px_30px_rgba(37,99,235,0.4)] disabled:opacity-50 disabled:cursor-not-allowed hover:-translate-y-1">
+                    <div className="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out"></div>
+                    <span className="relative z-10">{status === 'loading' ? 'Sending...' : 'Send Message'}</span>
+                    {!status === 'loading' && <ArrowRight size={20} className="relative z-10 group-hover:translate-x-1 transition-transform" />}
+                  </button>
+                </div>
+              </motion.form>
             </div>
 
           </div>

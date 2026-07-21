@@ -102,23 +102,7 @@ const Contact = () => {
     <div>
       <section className="py-10 relative">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-          <div className="text-center mb-16">
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-5xl font-bold mb-6"
-            >
-              Get In <span className="text-gradient">Touch</span>
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="text-xl text-gray-600 max-w-2xl mx-auto"
-            >
-              Have a project in mind? We'd love to hear about it. Drop us a message and we'll get back to you within 24 hours.
-            </motion.p>
-          </div>
+
 
           <div className="grid lg:grid-cols-3 gap-12">
 

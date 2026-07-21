@@ -1,35 +1,14 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { ShieldCheck } from 'lucide-react';
 
 const PrivacyPolicy = () => {
   return (
-    <div className="bg-[#F8FAFC] min-h-screen">
-      <section className="py-16 md:py-24 relative overflow-hidden">
-        {/* Background Gradients */}
-        <div className="absolute top-0 left-0 w-full h-96 bg-gradient-to-b from-[#E8E6FF]/50 to-transparent -z-10"></div>
-        <div className="absolute top-[-10%] right-[-5%] w-[40vw] h-[40vw] rounded-full bg-[#DFF6FF] blur-[120px] opacity-60 -z-10"></div>
-
+    <div>
+      <section className="py-12 md:py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-center mb-12"
-          >
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white shadow-sm border border-[#ECECEC] text-primary mb-6">
-              <ShieldCheck size={32} />
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-dark mb-4 tracking-tight">Privacy Policy</h1>
-            <p className="text-gray-500 text-lg">Last updated: September 10th, 2021</p>
-          </motion.div>
+          <h1 className="text-4xl md:text-5xl font-bold text-dark mb-4">Privacy Policy</h1>
+          <p className="text-gray-500 mb-10 pb-6 border-b border-gray-100">This Privacy policy was published on September 10th, 2021.</p>
           
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="bg-white rounded-3xl p-8 md:p-12 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-[#ECECEC]"
-          >
-            <div className="space-y-10 text-gray-600 leading-relaxed text-lg">
+          <div className="space-y-8 text-gray-600 leading-relaxed text-lg">
             <p>
               Thank you for choosing us and being a part of our community BrightCode Digital (“Company”, “we”, “us”, “our”). We are committed to protecting your personal information and your right to privacy.
             </p>
@@ -165,7 +144,7 @@ const PrivacyPolicy = () => {
             <div className="mt-12">
               <h2 className="text-2xl font-bold text-dark mb-4">7. Do we collect information from minors?</h2>
               <p>
-                We do not intentionally collect information from minors under the age of 18 or market to them. By using the website, you certify that you are at least 18 years old or that you are the parent or legal guardian of a child who will be using it with your permission. If we become aware that a user under the age of 18 has provided us with personal information, we will immediately deactivate the account and take reasonable steps to ensure that the information is removed from our files. Please get in touch with us at <a href="mailto:digitalbrightcode@gmail.com" className="text-primary hover:underline">digitalbrightcode@gmail.com</a> if you learn of any information we may have obtained from people under the age of 18.
+                We do not intentionally collect information from minors under the age of 18 or market to them. By using the website, you certify that you are at least 18 years old or that you are the parent or legal guardian of a child who will be using it with your permission. If we become aware that a user under the age of 18 has provided us with personal information, we will immediately deactivate the account and take reasonable steps to ensure that the information is removed from our files. Please get in touch with us at <a href="mailto:info@itcodeinfotech.com" className="text-primary hover:underline">info@itcodeinfotech.com</a> if you learn of any information we may have obtained from people under the age of 18.
               </p>
             </div>
 
@@ -189,7 +168,7 @@ const PrivacyPolicy = () => {
             <div className="mt-12">
               <h2 className="text-2xl font-bold text-dark mb-4">10. How can you contact us with regard to this notice?</h2>
               <p>
-                If you have any questions or suggestions about this notice, kindly email us at <a href="mailto:digitalbrightcode@gmail.com" className="text-primary hover:underline">digitalbrightcode@gmail.com</a>
+                If you have any questions or suggestions about this notice, kindly email us at <a href="mailto:info@itcodeinfotech.com" className="text-primary hover:underline">info@itcodeinfotech.com</a>
               </p>
             </div>
 
@@ -200,8 +179,7 @@ const PrivacyPolicy = () => {
               </p>
             </div>
             
-            </div>
-          </motion.div>
+          </div>
         </div>
       </section>
     </div>

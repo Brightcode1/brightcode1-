@@ -11,7 +11,7 @@ const TermsOfService = () => {
         <div className="absolute top-[-10%] right-[-5%] w-[40vw] h-[40vw] rounded-full bg-[#DFF6FF] blur-[120px] opacity-60 -z-10"></div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-center mb-12"
@@ -22,15 +22,15 @@ const TermsOfService = () => {
             <h1 className="text-4xl md:text-5xl font-bold text-dark mb-4 tracking-tight">Terms and Conditions</h1>
             <p className="text-gray-500 text-lg">Last updated: September 2021</p>
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
             className="bg-white rounded-3xl p-8 md:p-12 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-[#ECECEC]"
           >
             <div className="space-y-10 text-gray-600 leading-relaxed text-lg">
-              
+
               {/* Introduction */}
               <div className="flex gap-4">
                 <div className="flex-shrink-0 mt-1">

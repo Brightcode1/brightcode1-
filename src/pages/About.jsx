@@ -51,7 +51,7 @@ const About = () => {
               viewport={{ once: true }}
               className="relative"
             >
-              <img 
+              <img loading="lazy" decoding="async" 
                 src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop" 
                 alt="Our Team" 
                 className="rounded-2xl shadow-[0_0_30px_rgba(37,99,235,0.2)] border border-[#ECECEC]"

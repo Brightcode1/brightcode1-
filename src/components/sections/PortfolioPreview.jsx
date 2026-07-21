@@ -21,15 +21,25 @@ const PortfolioPreview = () => {
     : portfolioItems.filter(item => item.category === filter);
 
   return (
-    <section className="py-8 relative">
+    <section className="py-24 relative overflow-hidden bg-lightBg">
+      <div className="absolute top-1/4 left-0 w-96 h-96 bg-primary/10 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
+      
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-6 gap-4">
-          <div className="max-w-2xl">
+        <div className="flex flex-col lg:flex-row justify-between items-end mb-16 gap-8">
+          <div className="max-w-2xl relative z-10">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-2 py-2 px-5 rounded-full bg-white border border-gray-200 text-dark font-semibold text-sm mb-6 shadow-sm"
+            >
+              Selected Works
+            </motion.div>
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl font-bold mb-4"
+              className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-4 tracking-tight text-dark"
             >
               Our Featured <span className="text-gradient">Work</span>
             </motion.h2>
@@ -38,21 +48,21 @@ const PortfolioPreview = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-gray-600"
+              className="text-gray-600 text-lg md:text-xl font-light"
             >
               Explore some of our best projects that have driven success for our clients worldwide.
             </motion.p>
           </div>
           
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 lg:justify-end relative z-10">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                className={`px-6 py-2.5 rounded-full text-[15px] font-semibold transition-all duration-300 ${
                   filter === cat 
-                    ? 'bg-primary text-dark shadow-[0_0_10px_rgba(37,99,235,0.4)]' 
-                    : 'bg-white border border-[#ECECEC] shadow-sm text-gray-600 hover:bg-gray-50 border border-[#ECECEC] hover:text-dark'
+                    ? 'bg-dark text-white shadow-[0_10px_20px_rgba(15,23,42,0.2)] scale-105' 
+                    : 'bg-white border border-gray-200 shadow-sm text-gray-600 hover:bg-gray-50 hover:text-dark hover:border-gray-300'
                 }`}
               >
                 {cat}
@@ -61,31 +71,45 @@ const PortfolioPreview = () => {
           </div>
         </div>
 
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <AnimatePresence>
             {filteredItems.map((item) => (
               <motion.div
                 key={item.id}
                 layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.3 }}
-                className="group relative rounded-2xl overflow-hidden glass-card aspect-video cursor-pointer"
+                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                className="group relative rounded-[2rem] overflow-hidden bg-white shadow-sm hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-shadow duration-500 cursor-pointer border border-gray-100"
               >
-                <img src={item.image} alt={item.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-40" />
-                <div className="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/20 to-transparent p-6 flex flex-col justify-end">
-                  <div className="translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
-                    <span className="text-accent text-sm font-semibold mb-2 block">{item.category}</span>
-                    <h3 className="text-2xl font-bold text-dark mb-1">{item.title}</h3>
-                    <p className="text-gray-600 text-sm mb-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">{item.tech}</p>
+                <div className="aspect-[4/3] w-full overflow-hidden relative">
+                  <img loading="lazy" decoding="async" src={item.image} alt={item.title} className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-110" />
+                  
+                  {/* Premium Glass Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500"></div>
+                  
+                  <div className="absolute inset-0 p-8 flex flex-col justify-end z-10">
+                    <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                      <div className="inline-block px-3 py-1 bg-white/20 backdrop-blur-md rounded-lg text-white text-xs font-semibold uppercase tracking-wider mb-3 border border-white/20">
+                        {item.category}
+                      </div>
+                      <h3 className="text-2xl lg:text-3xl font-display font-bold text-white mb-2">{item.title}</h3>
+                      <p className="text-gray-300 text-sm font-light mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">{item.tech}</p>
+                      
+                      <div className="flex items-center gap-2 text-white/90 text-sm font-semibold opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200 translate-y-4 group-hover:translate-y-0">
+                        View Case Study
+                        <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30 group-hover:bg-primary group-hover:border-primary transition-colors">
+                          <ArrowUpRight size={16} />
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </motion.div>
             ))}
           </AnimatePresence>
         </motion.div>
-
       </div>
     </section>
   );
