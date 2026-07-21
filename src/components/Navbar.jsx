@@ -10,7 +10,6 @@ const navLinks = [
   { name: 'Portfolio', path: '/portfolio' },
   { name: 'Technologies', path: '/technologies' },
   { name: 'Digital Marketing', path: '/digital-marketing' },
-  { name: 'Contact', path: '/contact' },
 ];
 
 const MotionLink = motion(Link);
@@ -31,9 +30,8 @@ const Navbar = () => {
 
   return (
     <header
-      className={`fixed w-full top-0 z-50 transition-all duration-500 ease-in-out ${
-        scrolled ? 'glass-nav py-3' : 'bg-transparent py-5'
-      }`}
+      className={`fixed w-full top-0 z-50 transition-all duration-500 ease-in-out ${scrolled ? 'glass-nav py-3' : 'bg-transparent py-5'
+        }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
@@ -63,17 +61,15 @@ const Navbar = () => {
                   className="relative group py-2"
                 >
                   <span
-                    className={`text-[15px] font-medium transition-colors duration-300 ${
-                      isActive ? 'text-primary' : 'text-gray-600 hover:text-dark'
-                    }`}
+                    className={`text-[15px] font-medium transition-colors duration-300 ${isActive ? 'text-primary' : 'text-gray-600 hover:text-dark'
+                      }`}
                   >
                     {link.name}
                   </span>
                   {/* Animated Underline */}
                   <span
-                    className={`absolute bottom-0 left-0 w-full h-[2px] bg-gradient-primary transform origin-left transition-transform duration-300 ease-out ${
-                      isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
-                    }`}
+                    className={`absolute bottom-0 left-0 w-full h-[2px] bg-gradient-primary transform origin-left transition-transform duration-300 ease-out ${isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                      }`}
                   ></span>
                   {/* Soft Glow on active */}
                   {isActive && (
@@ -82,7 +78,7 @@ const Navbar = () => {
                 </Link>
               );
             })}
-            
+
             <MotionLink
               to="/contact"
               whileHover={{ scale: 1.05 }}
@@ -127,9 +123,8 @@ const Navbar = () => {
                   <Link
                     to={link.path}
                     onClick={() => setIsOpen(false)}
-                    className={`block text-lg font-medium transition-colors ${
-                      location.pathname === link.path ? 'text-primary' : 'text-gray-700 hover:text-primary'
-                    }`}
+                    className={`block text-lg font-medium transition-colors ${location.pathname === link.path ? 'text-primary' : 'text-gray-700 hover:text-primary'
+                      }`}
                   >
                     {link.name}
                   </Link>
